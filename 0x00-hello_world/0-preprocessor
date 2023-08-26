@@ -1,2 +1,19 @@
 #!/bin/bash
-gcc -E $CFILE .o c
+
+# Get the C file name from the environment variable
+CFILE=$CFILE
+
+# Check if the C file is provided
+if [ -z "$CFILE" ]; then
+    echo "Error: C file not specified. Set the \$CFILE environment variable."
+    exit 1
+fi
+
+# Define the output file name
+OUTPUT_FILE="c"
+
+# Run the C file through the preprocessor and save the result to the output file
+cpp -o "$OUTPUT_FILE" "$CFILE"
+
+echo "Preprocessed output saved to $OUTPUT_FILE"
+
