@@ -1,14 +1,2 @@
 #!/bin/bash
-
-# Get the C file name
-CFILE=$1
-
-# Get the output file name
-OUTPUT_FILE=${CFILE%.c}.s
-
-# Compile the C file to assembly code
-gcc -S $CFILE
-
-# Move the assembly code to the output file
-mv $CFILE.s $OUTPUT_FILE
-
+gcc -S 
