@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the name of the C file
+CFILE=$1
+
+# Create the output file
+OUTPUT_FILE=${CFILE%.c}.s
+
+# Compile the C file to assembly code
+gcc -S -masm=intel $CFILE
+
+# Move the assembly code to the output file
+mv $CFILE.s $OUTPUT_FILE
+
+# Check the style of the assembly code
+betty-style -f $OUTPUT_FILE
